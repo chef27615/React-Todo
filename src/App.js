@@ -1,17 +1,55 @@
-import React from 'react';
+import React, {Component} from 'react';
 import TodoList from './components/TodoComponents/TodoList';
 
+import TodoForm from './components/TodoComponents/TodoForm';
 
-class App extends React.Component{
-  
+const taskTodo = 
+  [
+    {
+      task: 'Organize Garage',
+      id: 1528817077286,
+      completed: false
+    },
+    {
+      task: 'Bake Cookies',
+      id: 1528817084358,
+      completed: false
+    }
+  ];
 
-  render (){
-    return(
-      <div className="App">
-        <TodoList />
-      </div>
-    );
+
+
+class App extends Component {
+
+  constructor(){
+    super();
+    this.state = {
+      taskTodo
+    } 
   }
+  
+  addTodos = (e, item) =>{
+    e.preventDefault();
+    const newTodo = {
+      task: item,
+      id: Date.now(),
+      completed: false
+    }
+    console.log(newTodo);
+    this.setState({
+      taskTodo: [...this.state.taskTodo, newTodo]
+    });
+  };
+
+
+  render(){
+    return(
+      <div className="wrapper">
+        <h1>Todos</h1>
+        <TodoForm addTodos={this.addTodos}/>
+        <TodoList thingsTodo = {this.state.taskTodo} />
+      </div>
+  )};
 }
 
 
