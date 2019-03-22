@@ -7,17 +7,21 @@ class TodoForm extends Component{
         this.state = {
             item:''
         }
-    
-        
+
     }
     
     handleChanges = e => {
         this.setState({[e.target.name]: e.target.value})
     }
 
+    submitNewItem = e => {
+        this.setState({item:''})
+        this.props.addTodos( e, this.state.item)
+    }
+
     render() {
        return(
-        <form onSubmit= {e=> this.props.addTodos( e, this.state.item)}>
+        <form onSubmit= {this.submitNewItem}>
             <input 
              type="text"
              name="item" 
@@ -25,6 +29,7 @@ class TodoForm extends Component{
              onChange={this.handleChanges} 
             />
             <button>add</button>
+            
         </form>
         ); 
     }

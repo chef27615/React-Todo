@@ -35,19 +35,53 @@ class App extends Component {
       id: Date.now(),
       completed: false
     }
-    console.log(newTodo);
+    
     this.setState({
       taskTodo: [...this.state.taskTodo, newTodo]
     });
   };
+
+  clearTodos = (itemId) => {
+    
+    // this.setState({
+    //   taskTodo: this.state.taskTodo.filter(item => itemId !==item.id)
+    // })
+
+    this.setState({
+      taskTodo: this.state.taskTodo.map((item)=>{
+        itemId !== item.id
+        if(itemId === item.id){
+          return{...item, completed: !item.completed}
+        }
+        return item;
+      })
+    })
+  }
+
+  excuted = e =>{
+    e.preventDefault();
+    this.setState({
+      todoTask: this.state.taskTodo.filter()
+    })
+    
+  }
+
+
+
 
 
   render(){
     return(
       <div className="wrapper">
         <h1>Todos</h1>
-        <TodoForm addTodos={this.addTodos}/>
-        <TodoList thingsTodo = {this.state.taskTodo} />
+        <TodoForm
+         addTodos={this.addTodos}
+        />
+        <TodoList 
+        thingsTodo = {this.state.taskTodo} 
+        clearTodos={this.clearTodos}
+        />
+        <button onClick={this.excuted}>clear task</button>
       </div>
   )};
 }
