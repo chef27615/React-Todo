@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import Todo from './Todo';
 import TodoForm from './TodoForm';
+import './Todo.css'
 
 class TodoList extends Component {
 
@@ -28,9 +29,9 @@ class TodoList extends Component {
     render(){
         return(
             <div className="todoBody">
-                
-                {this.state.taskTodo.map((todo)=>
-                    (<Todo todo={todo} />)
+                <h1>ToDo List</h1>
+                {this.state.taskTodo.map((todo, index)=>
+                    (<Todo todo={todo} key={index} />)
                     )}
                    
                 <TodoForm addTodo={this.addTodo} />
