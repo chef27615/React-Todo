@@ -28,6 +28,7 @@ class TodoList extends Component {
         this.setState({
             todos: this.state.taskTodo.map(todo =>{
                 if(todo.id === id){
+                    
                     todo.completed = !todo.completed
                 }
                 return todo;
@@ -36,13 +37,14 @@ class TodoList extends Component {
     }
 
     delTodo=(id)=>{
-
-        console.log(id)
+        
+        
         this.setState({
-            todos: this.state.taskTodo.filter(todo=> 
+            taskTodo: this.state.taskTodo.filter(todo=> 
                 todo.id !==id
             )
         });
+        
     }
 
     render(){
