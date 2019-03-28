@@ -23,15 +23,30 @@ class TodoList extends Component {
         ]
 
     }
+    
+    markComplete=(id)=>{
+        this.setState({
+            todos: this.state.taskTodo.map(todo =>{
+                if(todo.id === id){
+                    todo.completed = !todo.completed
+                }
+                return todo;
+            })
+        });
+    }
 
-
+    delTodo=(id)=>{
+        this.setState({
+            todos: [...this.state.taskTodo.filter(todo => todo.id !== id)]
+        });
+    }
 
     render(){
         return(
             <div className="todoBody">
                 <h1>ToDo List</h1>
                 {this.state.taskTodo.map((todo, index)=>
-                    (<Todo todo={todo} key={index} />)
+                    (<Todo todo={todo} key={index} markComplete={this.markComplete} delTodo={this.delTodo} />)
                     )}
                    
                 <TodoForm addTodo={this.addTodo} />

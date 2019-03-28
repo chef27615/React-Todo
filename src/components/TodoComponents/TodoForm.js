@@ -4,6 +4,7 @@ class TodoForm extends Component{
 
     state = {
         name:''
+        
     }
 
     handleChange=(e)=>{
