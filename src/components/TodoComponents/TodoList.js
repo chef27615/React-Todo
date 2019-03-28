@@ -36,8 +36,12 @@ class TodoList extends Component {
     }
 
     delTodo=(id)=>{
+
+        console.log(id)
         this.setState({
-            todos: [...this.state.taskTodo.filter(todo => todo.id !== id)]
+            todos: this.state.taskTodo.filter(todo=> 
+                todo.id !==id
+            )
         });
     }
 
@@ -65,3 +69,7 @@ class TodoList extends Component {
 }
 
 export default TodoList;
+
+
+
+// [...this.state.taskTodo.filter(todo => todo.id !== id)]

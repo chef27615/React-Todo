@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import TodoList from './TodoList';
 
 
 
 class Todo extends Component{
-
+    
     getStyle =()=>{
         return {
             textDecoration: this.props.todo.completed ? 'line-through' : 'none'
@@ -14,8 +15,8 @@ class Todo extends Component{
 
 
     render(){
-
         return(
+            
             <div className="ogTodos" style ={this.getStyle()}>
                 <input type='checkbox' onChange={this.props.markComplete.bind(this, this.props.todo.id)} />
                 {' '}
@@ -35,5 +36,7 @@ const btnStyle={
     borderRadius: '50%',
     cursor: 'pointer'
 }
+
+
 
 export default Todo;
